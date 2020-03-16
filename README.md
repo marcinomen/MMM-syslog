@@ -30,8 +30,10 @@ Notification API Module for MagicMirror<sup>2</sup>
 | `types` | `{INFO: "dimmed", WARNING: "normal", ERROR: "bright"}` | Object with message types and their css class. |
 | `shortenMessage` | `false` | After how many characters the message should be cut. Default: show all. |
 | `alert` | `true` | Display notification? |
+| `headerSize` | `medium` | Header font size |
+| `rowSize` | `medium` | Message row size |
 
 ## How to Use
 Make an http get request like:
-  http://MIRROR_IP:MIRROR_PORT/syslog?type=INFO&message=YOUR_MESSAGE&silent=true : no notification
+  http://MIRROR_IP:MIRROR_PORT/syslog?type=INFO&message=YOUR_MESSAGE&silent=true
 
