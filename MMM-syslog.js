@@ -25,7 +25,9 @@ Module.register('MMM-syslog',{
 			ERROR: "exclamation-triangle"
 		},
 		shortenMessage: false,
-    alert: true
+		alert: true,
+		headerSize: "medium",
+		rowSize: "medium",
 	},
 
 	getStyles: function () {
@@ -70,7 +72,7 @@ Module.register('MMM-syslog',{
 		if(this.config.title !== false){
 			var title = document.createElement("header");
 			title.innerHTML = this.config.title || this.name;
-			title.classList.add("medium", "align-left");
+			title.classList.add(this.config.headerSize, "align-left");
 			wrapper.appendChild(title);
 		}
 		var logs = document.createElement("table");
@@ -92,7 +94,7 @@ Module.register('MMM-syslog',{
 				icon.classList.add(this.config.types[this.messages[i].type]);
 			}
 
-			iconCell.classList.add("medium");
+			iconCell.classList.add(this.config.rowSize);
 
 			iconCell.appendChild(icon);
 			callWrapper.appendChild(iconCell);
@@ -104,7 +106,7 @@ Module.register('MMM-syslog',{
 			//Set caller of row
 			var caller =  document.createElement("td");
 			caller.innerHTML = " " + message;
-			caller.classList.add("title", "medium", "align-left");
+			caller.classList.add("title", this.config.rowSize, "align-left");
 			if(this.config.types.hasOwnProperty(this.messages[i].type)){
 				caller.classList.add(this.config.types[this.messages[i].type]);
 			}
@@ -113,7 +115,7 @@ Module.register('MMM-syslog',{
 			//Set time of row
 			var time =  document.createElement("td");
 			time.innerHTML = "   " + this.config.format ? moment(this.messages[i].timestamp).format(this.config.format) : moment(this.messages[i].timestamp).fromNow();
-			time.classList.add("time", "light", "small","align-right");
+			time.classList.add("time", "light", this.config.rowSize,"align-right");
 			callWrapper.appendChild(time);
 
 			//Add to logs
